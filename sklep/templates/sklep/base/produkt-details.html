@@ -1,0 +1,182 @@
+{% extends 'sklep/base/base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" text="type/css" href="{% static 'sklep/base/produkt-details.css' %}">
+{% endblock %}
+
+{% block title %}
+{{ produkt.marka }} {{ produkt.model }} 
+{% endblock %}
+{% block content %}
+<div class="show-produkt">
+    <div class="produkt-left-side">
+        <div class="photo-slider">
+            <div class="main-photo">
+                <img src="{{ produkt.zdjecie_glowne.url }}" alt="{{ produkt.marka }} {{ produkt.model }} ">
+            </div>
+            <div class="produkt-photos">
+                {%for z in zdjecia%}
+                    <img src="{{ z.zdjecie.url }}" alt="{{ produkt.marka }} {{ produkt.model }} ">
+                {%endfor%}
+            </div>
+            
+        </div>
+        <div class="produkt-opinions">
+            <h2>OCENY I OPINIE</h2>
+            <div class="add-opinion">
+                {% if user.is_authenticated %}
+                <h3>Dodaj opinię</h3>
+                <form method="POST" action="{% url 'sklep:add_opinion_on_produkt' produkt.id %}">
+                    {% csrf_token %}
+                    <textarea id="text-opinion" name="komentarz" placeholder="Podziel się z nami swoją opinią..." cols="40" rows="5" maxlength="400" ></textarea>
+
+                    <div class="rating">
+                       
+                        <input name="ocena" id="e5" type="radio" value="5">
+                        <label for="e5">
+                        </a>☆
+                        </label>
+
+                        
+                        <input name="ocena" id="e4" type="radio" value="4">
+                        <label for="e4">
+                        </a>☆
+                        </label>
+
+                        <input name="ocena" id="e3" type="radio" value="3">
+                        <label for="e3">
+                        </a>☆
+                        </label>
+
+                        <input name="ocena" id="e2" type="radio" value="2">
+                        <label for="e2">
+                        </a>☆
+                        </label>
+
+                        <input name="ocena" id="e1" type="radio" value="1">
+                        <label for="e1">
+                        </a>☆
+                        </label>
+
+                    </div>
+                    <button type="submit" value="add-opinion" id="add-opinion-btn">Dodaj opinię</button>
+                </form>
+                {% else %}
+                <h3><a class="not-logged" href="{% url 'sklep:login_user' %}">Zaloguj się, aby dodać opinię</a></h3>
+                {% endif %}
+            </div>
+            <div class="opinion">
+                {% for opinia in opinie %}
+                <div class="slot">
+                    {% if produkt.pk == opinia.produkt.pk %}
+                    <div class="opinion-main">
+                        <div class="user-first-and-last-name">
+                            {{ opinia.klient.user.username }}
+                        </div>
+                        <div class="opinion-rate">
+
+                            {% if opinia.ocena == 1 %}
+                            <div class="kom-gwiazdki">
+                                <p class="ocena-dod">
+                                    ☆
+                                </p>
+                                <p class="ocena-brak">
+                                    ☆☆☆☆
+                                </p>
+                            </div>
+
+                            {% elif opinia.ocena == 2 %}
+                            <div class="kom-gwiazdki">
+                                <p class="ocena-dod">
+                                    ☆☆
+                                </p>
+                                <p class="ocena-brak">
+                                    ☆☆☆
+                                </p>
+                            </div>
+
+                            {% elif opinia.ocena == 3 %}
+                            <div class="kom-gwiazdki">
+                                <p class="ocena-dod">
+                                    ☆☆☆
+                                </p>
+                                <p class="ocena-brak">
+                                    ☆☆
+                                </p>
+                            </div>
+
+                            {% elif  opinia.ocena  == 4 %}
+                            <div class="kom-gwiazdki">
+                                <p class="ocena-dod">
+                                    ☆☆☆☆
+                                </p>
+                                <p class="ocena-brak">
+                                    ☆
+                                </p>
+                            </div>
+
+                            {% elif opinia.ocena == 5 %}
+                            <div class="kom-gwiazdki">
+                                <p class="ocena-dod">
+                                    ☆☆☆☆☆
+                                </p>
+                            </div>
+                                </br>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <div class="opinion-description">
+                        {{ opinia.komentarz }}
+                    </div>
+                    {% endif %}
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="produkt-right-side">
+        <div class="produkt-name-and-price">
+            <div class="produkt-name">
+                <h2>{{ produkt.marka }} {{ produkt.model }}</h2>
+            </div>
+            <div class="produkt-price">
+                {{ produkt.cena }}
+            </div>
+        </div>
+        <div class="produkt-description">
+            {{ produkt.opis }}
+        </div>
+        <div class="produkt-size">
+            <h3>Dostępne rozmiary</h3>
+            {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'sklep:add_to_cart' produkt.id %}">
+                {% csrf_token %}
+            <div class="select-size">
+                {% for r in rozmiar %}
+                    {% if r.ilosc_dostepnego > 0 %}
+                        {%if forloop.first%}
+                            <input type="radio" name="produkt-size" id="s{{ r.rozmiar }}" value="{{ r.rozmiar }}" checked='true'/>
+                            <label for="s{{ r.rozmiar }}">{{ r.rozmiar }}</label>
+                        {%else%}
+                            <input type="radio" name="produkt-size" id="s{{ r.rozmiar }}" value="{{ r.rozmiar }}" />
+                            <label for="s{{ r.rozmiar }}">{{ r.rozmiar }}</label>
+                        {%endif%}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="produkt-add-to-cart">
+                <button type ='submit' value="add_to_cart" class="add-to-cart-btn">          
+                    Dodaj do koszyka
+                </button>
+            </form>
+            {% else %}
+            <h3><a class="not-logged" href="{% url 'sklep:login_user' %}">Zaloguj się, aby kupić produkt</a></h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
