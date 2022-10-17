@@ -87,7 +87,10 @@ WSGI_APPLICATION = 'projektio.wsgi.application'
 #    }
 #}
 DATABASES = {
-    'default' : dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
 }
 
 # Password validation
