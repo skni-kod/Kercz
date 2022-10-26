@@ -7,12 +7,30 @@ from django.db.models.signals import post_save
 from django.core.validators import RegexValidator
 
 
+
 # Create your models here.
+
+class Produkt(models.Model):
+    marka = models.CharField(max_length=50)
+    model = models.CharField(max_length=50)
+    cena = models.DecimalField(max_digits=9,decimal_places=2)
+    opis = models.CharField(max_length=500, blank=True)
+    zdjecie_glowne = models.ImageField(upload_to = 'images',null=True)
+    podkategoria = models.ForeignKey('Podkategoria',on_delete=models.CASCADE,null=True) 
+
+
+    def __str__(self):
+        return f"{self.marka} {self.model}"
+
+    class Meta:
+        verbose_name = "Produkt"
+        verbose_name_plural = "Produkty"
 
 class Klient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     data_urodzenia = models.DateField(null=True,blank=True)
     telefon = models.CharField(max_length=9,null=True,blank=True)
+    ulub_produkty = models.ManyToManyField(Produkt, related_name='client_set') #Dawid - jedna linijka dodana
     
     def __str__(self):
         return f"{self.user.username}"
@@ -119,23 +137,6 @@ class Produkt_Rozmiar(models.Model):
     
     def __str__(self):
         return f"{self.rozmiar.rozmiar} {self.produkt.marka} {self.produkt.model}"
-
-class Produkt(models.Model):
-    marka = models.CharField(max_length=50)
-    model = models.CharField(max_length=50)
-    cena = models.DecimalField(max_digits=9,decimal_places=2)
-    opis = models.CharField(max_length=500, blank=True)
-    zdjecie_glowne = models.ImageField(upload_to = 'images',null=True)
-    podkategoria = models.ForeignKey('Podkategoria',on_delete=models.CASCADE,null=True)
-
-
-    def __str__(self):
-        return f"{self.marka} {self.model}"
-
-    class Meta:
-        verbose_name = "Produkt"
-        verbose_name_plural = "Produkty"
-
 
 class PozycjaZamowienia(models.Model):
     ilosc = models.IntegerField()

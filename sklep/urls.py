@@ -34,6 +34,7 @@ urlpatterns = [
     path('searchProduct/', views.searchBar, name='searchProduct'), #Karolina
 
     path('user_site/',views.user_view ,name='user_view'), #Maciek
+    path('user_site/fav_products', views.FavProducts.as_view(), name='fav_view'),  #Dawid
     path('orders_site/',views.orders_view,name='orders_view'), #Grzesiu
     path('add_adres/',views.add_adres,name='add_adres'), #Maciek
     path('adres/<int:adres_id>/',views.egz_adres_modify_view,name="adres_mod"), #Maciek

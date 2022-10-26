@@ -20,6 +20,7 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.core.mail import mail_admins
 from numpy import full
 from django.core.mail import send_mail
+from django.views import View
 
 from .forms import  ExtendedUserCreationForm,klientForm,UserDataModification,AdresForm,UserNickMod,KartyPlatniczeForm
 from .models import Adres, Kategoria, Platnosci, PozycjaZamowienia, Produkt, Opinie,Klient, Produkt_Rozmiar, RodzajePlatnosci, Zamowienie, RodzajWysylki,KartyPlatnicze, Zdjecia
@@ -740,4 +741,16 @@ def kontakt(request):
         return render(request,'sklep/user/kontakt.html')
     else:
         return redirect('sklep:base')
+
+
+class FavProducts(View):  #Dawid - ulubione produkty
+    def get(self, request, *args, **kwargs):
+        if (request.user.is_authenticated == False):
+            return redirect('sklep:login_user')
+        else:
+            client = Klient.objects.get(user=request.user)
+            fav_products = client.ulub_produkty.all()
+            return render(request, 'sklep/base/fav-products.html', {'fav_products': fav_products})
+            
+          
     
