@@ -2,6 +2,7 @@ let showHideCategoriesButton = document.getElementById('show-hide-categories')
 let categories = document.getElementById('category-list')
 let categoryBtnBox = document.getElementById('category-btn-box')
 
+
 window.addEventListener('resize',removeHideClass)
 showHideCategoriesButton.addEventListener('click',showHideCategories)
 
@@ -25,5 +26,9 @@ function removeHideClass(){
     categoryBtnBox.classList.add('hide')
 
 }
+
+
+
+
 
 

@@ -234,3 +234,7 @@ class Platnosci(models.Model):
     class Meta:
         verbose_name = "Płatności"
         verbose_name_plural = "Płatności"    
+
+class Pytania(models.Model):  #Dawid
+    question = models.CharField(max_length = 1000)
+    answer = models.CharField(max_length = 1000)

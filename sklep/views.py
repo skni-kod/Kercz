@@ -24,7 +24,7 @@ from django.views import View
 
 from .forms import  ExtendedUserCreationForm,klientForm,UserDataModification,AdresForm,UserNickMod,KartyPlatniczeForm
 from .models import Adres, Kategoria, Platnosci, PozycjaZamowienia, Produkt, Opinie,Klient, Produkt_Rozmiar, RodzajePlatnosci, Zamowienie, RodzajWysylki,KartyPlatnicze, Zdjecia
-from .models import Adres, Platnosci, Podkategoria, PozycjaZamowienia, Produkt, Opinie,Klient, Produkt_Rozmiar, RodzajePlatnosci, Zamowienie, RodzajWysylki,KartyPlatnicze
+from .models import Adres, Platnosci, Podkategoria, PozycjaZamowienia, Produkt, Opinie,Klient, Produkt_Rozmiar, RodzajePlatnosci, Zamowienie, RodzajWysylki,KartyPlatnicze, Pytania
 # Create your views here.
 
 def initialize(request):
@@ -753,4 +753,23 @@ class FavProducts(View):  #Dawid - ulubione produkty
             return render(request, 'sklep/base/fav-products.html', {'fav_products': fav_products})
             
           
+class Faq(View):  #Dawid
+    def get(self, request, *args, **kwargs):
+        question_list = Pytania.objects.all()
+        return render(request, 'sklep/base/faq.html', {'question_list':question_list})
+    
+    def post(self, request, *args, **kwargs): 
+        question = request.POST.get('question')
+        answer = request.POST.get('answer')
+        if(question != '' and answer != ''):
+            Pytania.objects.create(question=question, answer=answer)
+        return redirect('sklep:faq')
+
+class DeleteQuestion(View): #Dawid
+    def get(self, request, question_id, *args, **kwargs):
+        if(request.user.is_superuser):
+            Pytania.objects.get(id=question_id).delete()
+            return redirect('sklep:faq')
+        else:
+            return redirect('sklep:faq')
     

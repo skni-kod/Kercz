@@ -7,6 +7,7 @@
             </a>
         </div>
         <div class="login-register-buttons">
+            <a href="{% url 'sklep:faq' %}">FAQ</a>
             {% if user.is_authenticated %}
                 <div class="login">
                     <p>Witaj <a class='user-buttons' href="{% url 'sklep:user_view' %}">{{ user.first_name }}</a></p>
