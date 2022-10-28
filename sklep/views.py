@@ -4,7 +4,7 @@ import email
 from lib2to3.pgen2.token import OP
 from mimetypes import common_types
 from multiprocessing import context
-from django.http import Http404
+from django.http import Http404, HttpResponseForbidden
 from django.http import Http404, HttpResponse
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
@@ -39,6 +39,9 @@ def base(request): #
     initialize(request)
     produkt_list = Produkt.objects.all().order_by('-id')[:10]
     context = {'produkt_list' : produkt_list}
+    if(request.user.is_authenticated and not request.user.is_superuser): #Dawid not superuser poniewaz superuser nie jest Klientem wg. modelu
+        fav_products = Klient.objects.get(user=request.user).ulub_produkty.all() #Dawid - do wczytania czy produkt jest ulubiony czy nie na stronie glownej
+        context['fav_products']=fav_products                                    #Dawid 'fav_products' dodane do context
     return render(request, 'sklep/base/base.html',context)
 
 def detail(request, produkt_id):
@@ -745,12 +748,28 @@ def kontakt(request):
 
 class FavProducts(View):  #Dawid - ulubione produkty
     def get(self, request, *args, **kwargs):
-        if (request.user.is_authenticated == False):
-            return redirect('sklep:login_user')
-        else:
-            client = Klient.objects.get(user=request.user)
-            fav_products = client.ulub_produkty.all()
+        if (request.user.is_authenticated and not request.user.is_superuser):  #Dawid not superuser poniewaz superuser nie jest Klientem wg. modelu
+            fav_products = Klient.objects.get(user=request.user).ulub_produkty.all()
             return render(request, 'sklep/base/fav-products.html', {'fav_products': fav_products})
+
+        return redirect('sklep:login_user')
+        
+        
+    
+    def post(self, request, *args, **kwargs):
+        if (request.user.is_authenticated == False):
+            return HttpResponseForbidden()
+        post_data = json.loads(request.body.decode("utf-8"))
+        Product = Produkt.objects.get(id=post_data['id'])
+        client = Klient.objects.get(user=request.user)
+        if(Product in client.ulub_produkty.all()):
+            client.ulub_produkty.remove(Product)
+            client.save()
+            return HttpResponse()
+        
+        Klient.objects.get(user=request.user).ulub_produkty.add(Product)
+        return HttpResponse()
+        
             
           
 class Faq(View):  #Dawid

@@ -58,8 +58,45 @@
                             <div class="product-price">{{ produkt.cena }} zł</div>
                             <div class="product-category">{{ produkt.podkategoria.nazwa }}</div>
                         </div>
+                        <button id="{{produkt.id}}" class="add-to-fav-btn">{%csrf_token%}
+                            {%if produkt in fav_products %}
+                            Usuń z ulubionych
+                            {% else %}
+                            Dodaj do ulubionych
+                            {% endif %}
+                        </button>
                     </div>
                     {% endfor %}
+                    {%csrf_token%}
+                    <script>
+                        const prod_wrapper = document.querySelector('.product-wrapper')
+                        const btns = prod_wrapper.querySelectorAll('button')
+                        for (let i=0; i<btns.length; i++){
+                            const token = '{{csrf_token}}'
+                            btns[i].addEventListener('click', () => {
+                                data = JSON.stringify({
+                                    id: btns[i].id
+                                })
+                                fetch("user_site/fav_products", {
+                                    method: 'POST',
+                                    headers: {"X-CSRFToken": token},
+                                    body: data
+                                }).then((res) => {
+                                    if(res.ok){
+                                        if(btns[i].innerText == 'Dodaj do ulubionych'){
+                                            btns[i].innerText = 'Usuń z ulubionych'
+                                        }
+                                            else{
+                                        btns[i].innerText = 'Dodaj do ulubionych'
+                                        }
+                                    }
+                                    else{
+                                        console.log("Not logged")
+                                    }
+                                })
+                            })
+                        }
+                    </script>
                 </div>
             </div>
             {% endblock %}

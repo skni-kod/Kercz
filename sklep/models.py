@@ -30,7 +30,7 @@ class Klient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     data_urodzenia = models.DateField(null=True,blank=True)
     telefon = models.CharField(max_length=9,null=True,blank=True)
-    ulub_produkty = models.ManyToManyField(Produkt, related_name='client_set') #Dawid - jedna linijka dodana
+    ulub_produkty = models.ManyToManyField(Produkt, related_name='clients') #Dawid - jedna linijka dodana
     
     def __str__(self):
         return f"{self.user.username}"
