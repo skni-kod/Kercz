@@ -58,8 +58,32 @@
                             <div class="product-price">{{ produkt.cena }} zł</div>
                             <div class="product-category">{{ produkt.podkategoria.nazwa }}</div>
                         </div>
+                        <button id="{{produkt.id}}" class="add-to-fav-btn">{%csrf_token%}
+                            Usuń z ulubionych
+                        </button>
                     </div>
                     {% endfor %}
+                    <script>
+                        const prod_wrapper = document.querySelector('.product-wrapper')
+                        const btns = prod_wrapper.querySelectorAll('button')
+                        for (let i=0; i<btns.length; i++){
+                            const token = '{{csrf_token}}'
+                            btns[i].addEventListener('click', () => {
+                                data = JSON.stringify({
+                                    id: btns[i].id
+                                })
+                                fetch("", {
+                                    method: 'POST',
+                                    headers: {"X-CSRFToken": token},
+                                    body: data
+                                }).then((res) => {
+                                    if(res.ok){
+                                        document.location.reload()
+                                    }
+                                })
+                            })
+                        }
+                    </script>
                 </div>
             </div>
             {% endblock %}
