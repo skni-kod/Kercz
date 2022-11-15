@@ -1,0 +1,25 @@
+*[class*=icon--]{
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    display: block;
+}
+
+.icon--search{
+    mask-image: url(../icons/search.svg);
+    -webkit-mask-image: url(../icons/search.svg);
+}
+.icon--hearth{
+    mask-image: url(../icons/hearth.svg);
+    -webkit-mask-image: url(../icons/hearth.svg);
+}
+.icon--cart{
+    mask-image: url(../icons/cart.svg);
+    -webkit-mask-image: url(../icons/cart.svg);
+}

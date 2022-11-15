@@ -1,0 +1,8 @@
+:root{
+    --primary-color: #1A1E81;
+    --gradient-1: rgba(191, 208, 252, 0.38);
+    --gradient-2: rgba(215, 231, 255, 0.47);
+    --font-color: black;
+
+    --primary-color-hover: #1C274C;
+}
