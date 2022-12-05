@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Hello, world! You'ra at the shop!")
+
+def login(request):
+    return HttpResponse("Logowanie")
