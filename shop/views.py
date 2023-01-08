@@ -22,3 +22,7 @@ class GetRoutes(APIView):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+
+def register(request):
+    return HttpResponse("Rejestracja")
