@@ -1,0 +1,41 @@
+.product {
+  border: 1.5px solid grey;
+  height: 14.5rem;
+  width: 11.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: small;
+  border-radius: 3px;
+  position: relative;
+  text-align: center;
+}
+
+.heart {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  transition: opacity 0.5s linear;
+}
+
+figcaption {
+  border-top: 1.5px solid grey;
+  padding-top: 0.4rem;
+}
+
+.heart:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.product-image {
+  height: 11rem;
+  width: 11rem;
+}
+
+.product-description {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 0.2rem;
+}
