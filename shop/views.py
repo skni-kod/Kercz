@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
+from .models import *;
 
 
 def index(request):
@@ -26,3 +27,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 def register(request):
     return HttpResponse("Rejestracja")
+
+class Items(APIView):
+    def get(self,request):
+        products=Product.objects.all()
+        context={"items":{0:{"model":products[0].model,"price":products[0].price}}}
+        return Response(context)

@@ -25,7 +25,6 @@ const Footer = () => {
 
     return (
             <footer>
-
                 <ul className='footer-list'>
                     {footerLinks.map(footerLinks =>
                     <li key={footerLinks.name}>

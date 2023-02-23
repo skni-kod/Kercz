@@ -36,8 +36,6 @@ const fetchTokenRefresh = async (authTokens) => {
 }
 
 
-
-
 export const AuthProvider = ({children}) => {
     const checkAuthTokens = () => {
         let token = localStorage.getItem('authTokens');

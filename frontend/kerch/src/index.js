@@ -6,6 +6,7 @@ import { AuthProvider } from './context/authContext';
 import App from './views/app';
 import Home from './views/home';
 import Login from './views/login';
+import Item from './views/item';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
           <Route path="/home" element={<Home />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/item" element={<Item />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>

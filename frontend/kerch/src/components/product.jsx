@@ -1,7 +1,8 @@
 import "../assets/css/components/product.css";
 import { useState } from "react";
 
-const Product = ({ imageSrc, name, price, brand, model }) => {
+
+const Product = ({id, imageSrc, name, price, brand, model }) => {
   const [heart, setHeart] = useState("solid");
 
   const handleClick = () => {
@@ -11,7 +12,7 @@ const Product = ({ imageSrc, name, price, brand, model }) => {
       setHeart("solid");
     }
   };
-
+  
   return (
     <div className="product">
       <div className="heart-box">
