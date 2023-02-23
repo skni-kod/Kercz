@@ -3,97 +3,71 @@
     --base-dark-color: #d2d2d2;
   }
 img {
-    max-width: 150px;
+    max-width: 230px;
 }
-h2{
-    margin-left: 10%;
+.img-div-card{
+    padding: 35px 35px 35px 100px;
 }
-.main-shopping-cart-table {
+.item-card > p{
+    font-family: 'Dosis', sans-serif;
+    font-size: 24px;
+}
+.flex-center {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+}
+.item-price-card {
+    padding-top: 20px;
+    padding-right: 10px;
+    text-align: right;
+    color: #1A1E81;
+    font-weight: 571;
+    font-size: 25px;
+    font-family: 'Dosis', sans-serif;
+}
+.description-div-card{
     width: 100%;
-    box-sizing: border-box;
+    padding-left: 60px;
 }
-table {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
-    border-collapse:separate;
-    margin: 30px 0px;
-    width: 80%;
-    border-radius: 15px;
-    font-size: 18px;
-}
-thead {
-    border-collapse: separate;
-    border-spacing: 0px;
-}
-table > thead > tr > th{
-    box-sizing: border-box;
-    border: 2px solid #fff;
-    border-right: 10px solid var(--base-dark-color);
-    border-left: 10px solid var(--base-dark-color);
-    margin-top: 5px;
-    padding: 5px;
-    text-align: center;
-    width: 200px;
-    background: #d2d2d2;
-}
-a {
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
+.item-brand-card{
+    text-transform: capitalize;
     color: black;
-    display: inline-block;
-
+    font-weight: 400;
+    font-family: 'Dosis', sans-serif;
+    font-size: 27px;
 }
-table > tbody > tr > td{
-    border: 2px solid #fff;
-    box-sizing: border-box;
-    text-align: center;
-    width: 200px;
-    padding: 10px;
-    background: var(--base-light-color);
+.item-name-card {
+    font-size: 23px;
+    font-weight: 524;
+    font-family: 'Dosis', sans-serif;
 }
-table > tbody > tr:last-child > td:last-child {
-    border-radius: 0px 0px 15px 0px;
+.description-div-card > hr {    
+    width: 80%;
+    margin: 0px 0px 20px 0px;
+    border:  1px solid rgba(0, 0, 0, 0.24);
 }
-table > tbody > tr:last-child > td:first-child {
-    border-radius: 10px 0px 0px 15px;
+.flex-row{
+    display: flex;
+    flex-direction: row;
 }
-table > tbody > tr:last-child > td:nth-last-child(2){
-    border-radius: 15px 0px 0px 15px;
+.description-div-card > .flex-row > select{
+    margin-bottom: 10px;
+    font-size: 24px;
+    height: 28px;
+    width: 60px;
+    margin-right: 70px;
+    margin-bottom: 25px;
 }
-table > tbody > tr:last-child > td:nth-last-child(n+3){
-    background: white;
-}
-th:first-child{
-    border-radius: 10px 0px 0px 5px;
-    border-left: 3px solid #fff;
-}
-th:last-child{
-    border-radius: 0px 10px 5px 0px;
-    border-right: 3px solid #fff;
-}
-table > tbody > tr > td > a {
-    cursor: pointer;
-}
-.btn-buy:hover + .total-price-field, .btn-buy:hover { /*todo*/
-    transition: all 0.4s;
-    background-color: var(--base-dark-color);
+.flex-row > select{
+    margin-left: 10px;
 }
 
-@media all and (max-width: 1024px) { 
-    table {
-        font-size: 12px;
+@media all and (max-width: 1460px){
+    .item-card {
+        width: 100%;
     }
-    table > thead > tr > th{
-        padding: 1px;
-    }
-    img {
-        max-width: 10vw;
-    }
-    table > tbody > tr > td{
-        padding: 1px;
-        border: 1px solid #fff;
+    .flex-center {
+        display: flex;
+        flex-direction: column;
     }
 }

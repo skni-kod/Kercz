@@ -1,0 +1,233 @@
+.main-shopping-cart >* hr {
+    border:  1px solid black;
+    width: 100%;
+}
+.main-shopping-cart > h2, .left-shopping-cart > h2 {
+    margin-bottom: 15px;
+    font-size: 48px;
+    text-transform: uppercase;
+    margin-left: 3.5%;
+    font-family: 'Dosis', sans-serif;
+}
+.main-name-cart {
+    margin-top: 80px;
+}
+.left-shopping-cart > h2{
+    margin-top: 85px;
+    margin-bottom: 65px;
+}
+.inner-main-shopping-cart {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+.left-shopping-cart {
+    width: 62.5%;
+    padding: 0px 20px;
+}
+.right-shopping-cart {
+    width: 32.5%;
+    padding: 0px 20px;
+}
+.right-inner-shopping-cart {
+    padding: 50px 10%;
+}
+.main-shopping-cart >* h3 {
+    font-size: 36px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-transform: capitalize;
+    font-style: medium;
+}
+.main-shopping-cart >* p  {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Dosis', sans-serif;
+}
+
+.right-inner-shopping-cart > .center-flex > button {
+    margin-top: 76px;
+    width: 350px;
+    height: 40px;
+    text-align: center;
+    background-color: #1A1E81;
+    color: #FFFFFF;
+    font-size: 20px;
+    cursor: pointer;
+}
+.middle-hr {
+    width: 80%;
+    margin: auto;
+}
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.column-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.bottom-cart{
+    width: 100%;
+    height: 172px;
+}
+.table-gap {
+    width:165px;
+}
+.delivery-container, .payment-container {
+    margin-left: 50px;
+}
+.delivery-margin, .payment-margin{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.delivery-img, .payment-img {
+    width: 100px;
+    margin-right: 30px;
+    margin-left: 20px;
+}
+.delivery-container > .column-flex > label,.payment-container > .column-flex > label{
+    cursor: pointer;
+}
+.delivery-container > .column-flex > hr , .payment-container > .column-flex > hr {
+    width: 80%;
+    margin: 0px 0px 20px 0px;
+    border:  1px solid rgba(0, 0, 0, 0.24);
+}
+.delivery-price {
+    margin-right: 210px;
+    text-align: right;
+    color: #1A1E81;
+}
+.delivery-right-allign{
+    width: 100%;
+}
+.monochrome {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+.shopping-baner {
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+.shopping-baner > hr {
+    width: 105px;
+}
+.shopping-baner > p {
+    margin: 0px 35px;
+}
+.kercz-baner-img {
+    height: 100px;
+    margin-right: 40px;
+}
+#sum-cost{
+    font-weight: 571;
+    font-size: 28px;
+    font-family: 'Dosis', sans-serif;
+}
+.bold {
+    font-weight: bold;
+}
+.bottom-cart{
+    width: 100%;
+    background-color: rgba(217, 217, 217, 0.19);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;   
+}
+.bottom-cart >* p{
+    font-family: Dongle ,sans-serif;
+    font-weight: 400;
+    line-height: 52px;
+}
+.bottom-left{
+    margin-left: 100px;
+}
+.bottom-right{
+    margin-right: 100px;
+}
+
+.right-align {
+    text-align: right;
+}
+.bottom-hr{
+    margin: 50px 0px 0px 0px;
+    border:  1px solid #B4B4B4;
+}
+#totalPrice,#deliveryPrice{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+}
+
+@media all and (max-width: 600px){
+    /*bottom*/
+    .bottom-left{
+        margin-left: 18px;
+    }
+    .bottom-right{
+        margin-right: 18px;
+    }
+    .shopping-baner {
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 120px;
+        padding-top: 40px;
+    }
+    .shopping-baner > hr {
+        display: none;
+    }
+    .shopping-baner > p {
+        margin: 2px 0px;
+    }
+    .kercz-baner-img {
+        height: 100px;
+        margin: 20px 0px;
+    }
+    .delivery-price {
+        margin-right: 30px;
+        text-align: right;
+        color: #1A1E81;
+    }
+}
+@media all and (max-width: 1460px){
+    .inner-main-shopping-cart {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .left-shopping-cart {
+        width: 100%;
+        padding: 0px 20px;
+    }
+    .right-shopping-cart {
+        margin-top: 40px;
+        width: 100%;
+        padding: 0px 20px;
+        margin-bottom: 40px;
+    }
+    .middle-hr {
+        width: 80%;
+    }
+    img {
+        max-width: 10vw;
+    }
+}
+
