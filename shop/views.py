@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import MyTokenObtainPairSerializer
+from django.core.serializers import serialize
+from .serializers import MyTokenObtainPairSerializer, PhotoSerializer
 from .models import *;
 
 
@@ -30,6 +31,23 @@ def register(request):
 
 class Items(APIView):
     def get(self,request):
+        items={}
+        item_arr=[]
         products=Product.objects.all()
-        context={"items":{0:{"model":products[0].model,"price":products[0].price}}}
-        return Response(context)
+        photo_arr=[]
+        photos=Photo.objects.filter(product=products[0])
+        for p in photos:
+            photo_arr.append(PhotoSerializer(p,context={'request':request}).data)
+        item={
+            "id":products[0].id,
+            "model":products[0].model,
+            "price":products[0].price,
+            "mark":products[0].mark,
+            "description":products[0].description,
+            "photos":photo_arr
+            }
+        item_arr.append(item)
+        items["items"]=item_arr
+        return Response(items)
+
+

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const Product = ({id, imageSrc, name, price, brand, model }) => {
   const [heart, setHeart] = useState("solid");
+  const imageFolder="product_images/";
 
   const handleClick = () => {
     if (heart === "solid") {
@@ -25,15 +26,15 @@ const Product = ({id, imageSrc, name, price, brand, model }) => {
       </div>
 
       <figure>
-        <img className="product-image" src="/images/boots.jpg" alt="" />
+        <img className="product-image" src={`${imageFolder}${imageSrc}`} alt="" />
         <figcaption>
           <p className="product-description">
-            <span>Nazwa</span>
-            <span>Cena</span>
+            <span>{name}</span>
+            <span>{price}</span>
           </p>
           <p className="product-description">
-            <span>Marka</span>
-            <span>Model</span>
+            <span>{brand}</span>
+            <span>{model}</span>
           </p>
         </figcaption>
       </figure>

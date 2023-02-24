@@ -123,7 +123,7 @@ class Payment(models.Model):
 
 
 class Photo(models.Model):
-    photo = models.CharField(max_length=MAX_LENGTH)
+    photo = models.ImageField(upload_to='frontend/kerch/public/product_images', null=True) 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta:
