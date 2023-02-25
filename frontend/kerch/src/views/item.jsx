@@ -26,11 +26,11 @@ const Item = () => {
 
   useEffect(()=>{
     let data = fetch (`${SERVER}/items`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
-      //body: JSON.stringify({'email': email, 'password': password})
+      body: JSON.stringify({"items":[{"id":1 , "photo":true , "size": true}]})
     })
     .then((response) => response.json())
     .then((data)=>{

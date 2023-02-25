@@ -7,6 +7,7 @@ import App from './views/app';
 import Home from './views/home';
 import Login from './views/login';
 import Item from './views/item';
+import Cart from './views/cart';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/item" element={<Item />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>
