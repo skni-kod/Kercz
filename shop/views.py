@@ -4,6 +4,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
+from .serializers import ProductSerializer
+from .models import Product, Photo
+from rest_framework import generics
 
 
 def index(request):
@@ -22,6 +25,16 @@ class GetRoutes(APIView):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+
+class ProductList(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class PhotoList(generics.ListAPIView):
+    queryset = Photo.objects.all()
+    serializer_class = ProductSerializer
 
 
 def register(request):
