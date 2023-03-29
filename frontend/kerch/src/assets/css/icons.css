@@ -23,3 +23,15 @@
     mask-image: url(../icons/cart.svg);
     -webkit-mask-image: url(../icons/cart.svg);
 }
+.icon--mail{
+    mask-image: url(../icons/mail.svg);
+    -webkit-mask-image: url(../icons/mail.svg);
+}
+.icon--lock{
+    mask-image: url(../icons/lock.svg);
+    -webkit-mask-image: url(../icons/lock.svg);
+}
+.icon--user{
+    mask-image: url(../icons/user.svg);
+    -webkit-mask-image: url(../icons/user.svg);
+}

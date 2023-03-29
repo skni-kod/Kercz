@@ -1,4 +1,4 @@
-import '../assets/css/app.css';
+import '../assets/css/App.css';
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
