@@ -1,6 +1,8 @@
 :root {
     --base-light-color: #ebeeef;
     --base-dark-color: #d2d2d2;
+    --base-font: "Dosis";
+    --secondary-font: "Dongle";
   }
 img {
     max-width: 230px;
@@ -33,13 +35,13 @@ img {
     text-transform: capitalize;
     color: black;
     font-weight: 400;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
     font-size: 27px;
 }
 .item-name-card {
     font-size: 23px;
     font-weight: 524;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
 }
 .description-div-card > hr {    
     width: 80%;
@@ -60,6 +62,23 @@ img {
 }
 .flex-row > select{
     margin-left: 10px;
+}
+.flex-end{
+    justify-content: flex-end;
+}
+.fav-empty,.remove-item-cart{
+    margin-left: 15px;
+    height: 30px;
+    width: 30px;
+}
+.add-to-favourite{
+    cursor: pointer;
+}
+.remove-from-favourite{
+    cursor: pointer;
+}
+.add-to-favourite:hover > .fav-empty{
+    background: url(../../icons/favFilled.png);
 }
 
 @media all and (max-width: 1460px){

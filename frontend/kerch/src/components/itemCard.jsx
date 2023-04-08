@@ -1,5 +1,8 @@
 import "../assets/css/components/itemCard.css";
-import React from 'react'
+import React from 'react';
+import favEmpty from '../assets/icons/favEmpty.png';
+import removeItemCart from '../assets/icons/removeItemCart.png';
+
 
 const ItemCard = ({ item, currency}) => {
     const { img , name, size, price, quantity, brand} = item;
@@ -30,6 +33,16 @@ const ItemCard = ({ item, currency}) => {
             </select>
           </div>
           <hr></hr>
+          <div className="flex-row flex-end">
+            <div className="add-to-favourite flex-row">
+              <img className='fav-empty' src={favEmpty}></img>
+              <p>Dodaj do ulubionych</p>
+            </div>
+            <div className="remove-from-favourite flex-row">
+              <img className='remove-item-cart' src={removeItemCart}></img>
+              <p>Usuń</p>
+            </div>
+          </div>
         </div>
       </div>
       <hr></hr>

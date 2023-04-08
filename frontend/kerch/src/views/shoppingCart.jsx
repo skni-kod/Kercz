@@ -166,7 +166,7 @@ const ShoppingCart = () =>{
                                 
                             </td>
                             <td>
-                                <p id='deliveryPrice'>{delivery}zł</p>
+                                <p id='deliveryPrice'>{delivery}{currency}</p>
                             </td>
                         </tr>
                     </table>
