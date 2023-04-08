@@ -1,3 +1,10 @@
+:root {
+    --base-light-color: #ebeeef;
+    --base-dark-color: #d2d2d2;
+    --base-font: "Dosis";
+    --secondary-font: "Dongle";
+  }
+
 .main-shopping-cart >* hr {
     border:  1px solid black;
     width: 100%;
@@ -7,7 +14,7 @@
     font-size: 48px;
     text-transform: uppercase;
     margin-left: 3.5%;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
 }
 .main-name-cart {
     margin-top: 80px;
@@ -40,21 +47,30 @@
     text-transform: capitalize;
     font-style: medium;
 }
+.right-inner-shopping-cart > h3{
+    font-family: var(--base-font);
+}
 .main-shopping-cart >* p  {
     font-size: 24px;
     margin-bottom: 10px;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
+}
+.bottom-left > link > p{
+    font-family: var(--base-font);
+    font-size: 36px;
 }
 
-.right-inner-shopping-cart > .center-flex > button {
+.right-inner-shopping-cart > .center-flex > .btn-commit {
     margin-top: 76px;
     width: 350px;
     height: 40px;
     text-align: center;
     background-color: #1A1E81;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: 400;
     cursor: pointer;
+    font-family: var(--secondary-font);
 }
 .middle-hr {
     width: 80%;
@@ -127,6 +143,7 @@
 }
 .shopping-baner > p {
     margin: 0px 35px;
+    font-family: var(--base-font);
 }
 .kercz-baner-img {
     height: 100px;
@@ -135,7 +152,7 @@
 #sum-cost{
     font-weight: 571;
     font-size: 28px;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
 }
 .bold {
     font-weight: bold;
@@ -148,10 +165,11 @@
     align-items: center;
     justify-content: space-between;   
 }
-.bottom-cart >* p{
-    font-family: Dongle ,sans-serif;
+.bottom-left .bottom-font, .bottom-right > .bottom-font{
+    font-family: var(--secondary-font);
     font-weight: 400;
     line-height: 52px;
+    font-size: 36px;
 }
 .bottom-left{
     margin-left: 100px;
@@ -168,7 +186,7 @@
     border:  1px solid #B4B4B4;
 }
 #totalPrice,#deliveryPrice{
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
     font-weight: 500;
 }
 

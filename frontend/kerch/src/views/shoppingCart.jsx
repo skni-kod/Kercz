@@ -186,7 +186,7 @@ const ShoppingCart = () =>{
                     <p id='sum-cost'>{total+parseFloat(delivery)}zł</p>
                     </div>
                     <div className='center-flex'>
-                        <button>Przejdź do kasy</button>
+                        <button className='btn-commit'>Przejdz do kasy</button>
                     </div>
                 </div>
                 <hr></hr>
@@ -196,11 +196,11 @@ const ShoppingCart = () =>{
         <div className='bottom-cart'>
             <div className='bottom-left'>
                 <Link to="/">
-                    <p>&lt;&lt; Wróć do sklepu</p>
+                    <p className='bottom-font'>&lt;&lt; Wroc do sklepu</p>
                 </Link>
             </div>
             <div className='bottom-right'>
-                <p className='right-align'>&copy; Kercz {currentYear()}</p>
+                <p className='right-align bottom-font'>&copy; Kercz {currentYear()}</p>
             </div>
         </div>
     </div>

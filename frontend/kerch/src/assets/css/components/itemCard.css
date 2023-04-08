@@ -11,7 +11,7 @@ img {
     padding: 35px 35px 35px 100px;
 }
 .item-card > p{
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
     font-size: 24px;
 }
 .flex-center {
@@ -25,7 +25,7 @@ img {
     color: #1A1E81;
     font-weight: 571;
     font-size: 25px;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--base-font);
 }
 .description-div-card{
     width: 100%;
@@ -59,9 +59,13 @@ img {
     width: 60px;
     margin-right: 70px;
     margin-bottom: 25px;
+    font-family: var(--base-font);
 }
 .flex-row > select{
     margin-left: 10px;
+}
+select > option{
+    font-family: var(--base-font);
 }
 .flex-end{
     justify-content: flex-end;
@@ -73,9 +77,11 @@ img {
 }
 .add-to-favourite{
     cursor: pointer;
+    user-select: none;
 }
 .remove-from-favourite{
     cursor: pointer;
+    user-select: none;
 }
 .add-to-favourite:hover > .fav-empty{
     background: url(../../icons/favFilled.png);
